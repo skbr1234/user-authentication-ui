@@ -4,7 +4,7 @@ import {
   AuthResponse, 
   ForgotPasswordRequest, 
   ResetPasswordRequest 
-} from '@/types/auth.types';
+} from '../types/auth.types';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_AUTH_API_URL || 'http://localhost:3000/api';
 

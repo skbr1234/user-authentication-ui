@@ -8,16 +8,6 @@ const nextConfig = {
   experimental: {
     appDir: false, // Using pages router for better i18n support
   },
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.experiments = {
-        ...config.experiments,
-        topLevelAwait: true,
-      };
-    }
-    return config;
-  },
-  // Module Federation will be added later for microfrontend setup
   async headers() {
     return [
       {
