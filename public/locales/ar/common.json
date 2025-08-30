@@ -1,0 +1,41 @@
+{
+  "auth": {
+    "title": "المصادقة",
+    "description": "مصادقة آمنة لـ PropertyVista Flow",
+    "welcome": "مرحباً بك في PropertyVista",
+    "subtitle": "بوابتك إلى فرص العقارات",
+    "login": "تسجيل الدخول",
+    "register": "إنشاء حساب",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "firstName": "الاسم الأول",
+    "lastName": "اسم العائلة",
+    "phone": "رقم الهاتف",
+    "role": "أنا",
+    "roles": {
+      "buyer_renter": "مشتري/مستأجر",
+      "seller_landlord": "بائع/مؤجر"
+    },
+    "forgotPassword": "نسيت كلمة المرور؟",
+    "resetPassword": "إعادة تعيين كلمة المرور",
+    "rememberMe": "تذكرني",
+    "signInWith": "تسجيل الدخول باستخدام",
+    "signUpWith": "إنشاء حساب باستخدام",
+    "google": "Google",
+    "apple": "Apple",
+    "alreadyHaveAccount": "لديك حساب بالفعل؟",
+    "dontHaveAccount": "ليس لديك حساب؟",
+    "termsAndConditions": "أوافق على الشروط والأحكام",
+    "privacyPolicy": "سياسة الخصوصية",
+    "submit": "إرسال",
+    "cancel": "إلغاء",
+    "loading": "جاري التحميل...",
+    "success": "نجح",
+    "error": "خطأ",
+    "emailVerification": "التحقق من البريد الإلكتروني",
+    "checkEmail": "يرجى التحقق من بريدك الإلكتروني للحصول على رابط التحقق",
+    "passwordReset": "إعادة تعيين كلمة المرور",
+    "enterEmail": "أدخل بريدك الإلكتروني لإعادة تعيين كلمة المرور"
+  }
+}
