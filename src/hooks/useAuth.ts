@@ -26,10 +26,15 @@ export const useAuthState = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem('auth_token');
-    if (token) {
-      // Validate token and get user info
-      setLoading(false);
+    // Only run on client side
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('auth_token');
+      if (token) {
+        // Validate token and get user info
+        setLoading(false);
+      } else {
+        setLoading(false);
+      }
     } else {
       setLoading(false);
     }
@@ -40,8 +45,10 @@ export const useAuthState = () => {
     try {
       const response = await authApi.login(data);
       setUser(response.user);
-      localStorage.setItem('auth_token', response.token);
-      localStorage.setItem('refresh_token', response.refreshToken);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('auth_token', response.token);
+        localStorage.setItem('refresh_token', response.refreshToken);
+      }
     } catch (error) {
       throw error;
     } finally {
@@ -54,8 +61,10 @@ export const useAuthState = () => {
     try {
       const response = await authApi.register(data);
       setUser(response.user);
-      localStorage.setItem('auth_token', response.token);
-      localStorage.setItem('refresh_token', response.refreshToken);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('auth_token', response.token);
+        localStorage.setItem('refresh_token', response.refreshToken);
+      }
     } catch (error) {
       throw error;
     } finally {
@@ -65,8 +74,10 @@ export const useAuthState = () => {
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem('auth_token');
-    localStorage.removeItem('refresh_token');
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('auth_token');
+      localStorage.removeItem('refresh_token');
+    }
   };
 
   return {
