@@ -38,6 +38,26 @@
     "passwordReset": "Password Reset",
     "enterEmail": "Enter your email to reset password"
   },
+  "email": {
+    "verification": {
+      "subject": "Verify Your Email - MyGolya",
+      "title": "Verify Your Email Address",
+      "greeting": "Thank you for registering with MyGolya!",
+      "instruction": "Please click the button below to verify your email address:",
+      "button": "Verify Email",
+      "alternative": "Or copy and paste this link in your browser:",
+      "footer": "This link will expire in 24 hours. If you didn't create an account, please ignore this email."
+    },
+    "passwordReset": {
+      "subject": "Reset Your Password - MyGolya",
+      "title": "Reset Your Password",
+      "greeting": "You requested to reset your password for MyGolya.",
+      "instruction": "Please click the button below to reset your password:",
+      "button": "Reset Password",
+      "alternative": "Or copy and paste this link in your browser:",
+      "footer": "This link will expire in 1 hour. If you didn't request this, please ignore this email."
+    }
+  },
   "validation": {
     "required": "This field is required",
     "invalidEmail": "Please enter a valid email",
