@@ -1,4 +1,4 @@
-import { GetStaticProps } from 'next';
+
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import Head from 'next/head';
@@ -22,7 +22,7 @@ export default function LoginPage() {
   );
 }
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
+export const getServerSideProps = async ({ locale }: any) => {
   return {
     props: {
       ...(await serverSideTranslations(locale ?? 'en', ['common'])),
