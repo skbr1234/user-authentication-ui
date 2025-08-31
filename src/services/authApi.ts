@@ -6,7 +6,7 @@ import {
   ResetPasswordRequest 
 } from '../types/auth.types';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_AUTH_API_URL || 'http://localhost:3000/api';
+const API_BASE_URL = process.env.NEXT_PUBLIC_AUTH_API_URL;
 
 class AuthApiService {
   private async request<T>(
