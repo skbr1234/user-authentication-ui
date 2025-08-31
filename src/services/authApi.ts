@@ -73,7 +73,7 @@ class AuthApiService {
   }
 
   async verifyEmail(token: string): Promise<{ message: string }> {
-    return this.request<{ message: string }>(`/auth/verify-email?token=${token}`, {
+    return this.request<{ message: string }>(`/auth/verify-email/${token}`, {
       method: 'GET',
     });
   }
