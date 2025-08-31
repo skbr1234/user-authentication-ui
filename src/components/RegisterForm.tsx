@@ -48,7 +48,9 @@ export function RegisterForm() {
     try {
       const { confirmPassword, acceptTerms, ...registerData } = data;
       await registerUser(registerData);
-      router.push('/dashboard');
+      if (typeof window !== 'undefined') {
+        router.push('/dashboard');
+      }
     } catch (err) {
       setError(t('errors.registrationFailed'));
     } finally {

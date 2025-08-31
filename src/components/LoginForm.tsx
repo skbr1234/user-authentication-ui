@@ -37,7 +37,9 @@ export function LoginForm() {
     setError('');
     try {
       await login(data);
-      router.push('/dashboard');
+      if (typeof window !== 'undefined') {
+        router.push('/dashboard');
+      }
     } catch (err) {
       setError(t('errors.loginFailed'));
     } finally {
