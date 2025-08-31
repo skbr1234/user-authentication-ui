@@ -51,7 +51,7 @@ export default function ResetPasswordPage() {
     try {
       await authApi.resetPassword({
         token,
-        password: data.password,
+        newPassword: data.password,
       });
       setSuccess(true);
     } catch (err) {
