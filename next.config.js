@@ -5,9 +5,7 @@ const nextConfig = {
   i18n,
   reactStrictMode: true,
   swcMinify: true,
-  experimental: {
-    appDir: false, // Using pages router for better i18n support
-  },
+
   async headers() {
     return [
       {

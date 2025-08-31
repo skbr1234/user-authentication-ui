@@ -16,12 +16,7 @@ module.exports = {
       'ko',    // Korean
       'ur',    // Urdu (RTL)
     ],
-    localePath: './public/locales',
-    localeDetection: true,
-    // Keep numbers and dates in English format globally
-    interpolation: {
-      escapeValue: false,
-    },
+    localeDetection: false,
   },
   reloadOnPrerender: process.env.NODE_ENV === 'development',
 };
