@@ -6,17 +6,17 @@ import '../src/styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  const { locale } = router;
 
   useEffect(() => {
     // Only run on client side
     if (typeof window !== 'undefined') {
+      const { locale } = router;
       // Set document direction for RTL languages
       const isRTL = locale === 'ar' || locale === 'ur';
       document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
       document.documentElement.lang = locale || 'en';
     }
-  }, [locale]);
+  }, [router.locale]);
 
   return <Component {...pageProps} />;
 }
