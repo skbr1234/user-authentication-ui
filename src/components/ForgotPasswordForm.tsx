@@ -4,12 +4,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
-import { Button } from '@/components/ui/Button';
-import { Input } from '@/components/ui/Input';
-import { Label } from '@/components/ui/Label';
-import { Card } from '@/components/Layout';
-import { authApi } from '@/services/authApi';
-import { Loader2, ArrowLeft } from 'lucide-react';
+import { authApi } from '../services/authApi';
+import { ArrowLeftIcon } from '@heroicons/react/24/outline';
 
 const forgotPasswordSchema = z.object({
   email: z.string().email(),
@@ -46,27 +42,27 @@ export function ForgotPasswordForm() {
 
   if (success) {
     return (
-      <Card className="w-full max-w-md mx-auto">
+      <div className="w-full max-w-md mx-auto bg-white rounded-lg shadow-md p-6 sm:p-8">
         <div className="text-center space-y-4">
-          <h1 className="text-2xl sm:text-3xl font-bold">{t('auth.emailVerification')}</h1>
-          <p className="text-sm text-muted-foreground">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">{t('auth.emailVerification')}</h1>
+          <p className="text-sm text-gray-600">
             {t('auth.checkEmail')}
           </p>
-          <Link href="/login" className="inline-flex items-center text-primary hover:underline">
-            <ArrowLeft className="mr-2 h-4 w-4" />
+          <Link href="/login" className="inline-flex items-center text-blue-600 hover:text-blue-500">
+            <ArrowLeftIcon className="mr-2 h-4 w-4" />
             {t('auth.login')}
           </Link>
         </div>
-      </Card>
+      </div>
     );
   }
 
   return (
-    <Card className="w-full max-w-md mx-auto">
+    <div className="w-full max-w-md mx-auto bg-white rounded-lg shadow-md p-6 sm:p-8">
       <div className="space-y-6">
         <div className="text-center space-y-2">
-          <h1 className="text-2xl sm:text-3xl font-bold">{t('auth.forgotPassword')}</h1>
-          <p className="text-sm text-muted-foreground">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">{t('auth.forgotPassword')}</h1>
+          <p className="text-sm text-gray-600">
             {t('auth.enterEmail')}
           </p>
         </div>
@@ -79,31 +75,35 @@ export function ForgotPasswordForm() {
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="email">{t('auth.email')}</Label>
-            <Input
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">{t('auth.email')}</label>
+            <input
               id="email"
               type="email"
               {...register('email')}
               placeholder={t('auth.email')}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
             {errors.email && (
               <p className="text-sm text-red-600">{t('validation.invalidEmail')}</p>
             )}
           </div>
 
-          <Button type="submit" className="w-full" disabled={isLoading}>
-            {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-            {t('auth.submit')}
-          </Button>
+          <button
+            type="submit"
+            disabled={isLoading}
+            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isLoading ? 'Loading...' : t('auth.submit')}
+          </button>
         </form>
 
         <div className="text-center">
-          <Link href="/login" className="inline-flex items-center text-sm text-primary hover:underline">
-            <ArrowLeft className="mr-2 h-4 w-4" />
+          <Link href="/login" className="inline-flex items-center text-sm text-blue-600 hover:text-blue-500">
+            <ArrowLeftIcon className="mr-2 h-4 w-4" />
             {t('auth.login')}
           </Link>
         </div>
       </div>
-    </Card>
+    </div>
   );
 }

@@ -2,8 +2,8 @@ import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import Head from 'next/head';
-import { Layout } from '@/components/Layout';
-import { ForgotPasswordForm } from '@/components/ForgotPasswordForm';
+import { Layout } from '../src/components/Layout';
+import { ForgotPasswordForm } from '../src/components/ForgotPasswordForm';
 
 export default function ForgotPasswordPage() {
   const { t } = useTranslation('common');
