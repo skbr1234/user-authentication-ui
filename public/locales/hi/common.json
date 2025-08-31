@@ -1,8 +1,8 @@
 {
   "auth": {
     "title": "प्रमाणीकरण",
-    "description": "PropertyVista Flow के लिए सुरक्षित प्रमाणीकरण",
-    "welcome": "PropertyVista में आपका स्वागत है",
+    "description": "MyGolya के लिए सुरक्षित प्रमाणीकरण",
+    "welcome": "MyGolya में आपका स्वागत है",
     "subtitle": "रियल एस्टेट के अवसरों का आपका प्रवेश द्वार",
     "login": "साइन इन करें",
     "register": "साइन अप करें",

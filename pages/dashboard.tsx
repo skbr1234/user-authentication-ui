@@ -25,7 +25,7 @@ export default function DashboardPage() {
   return (
     <>
       <Head>
-        <title>Dashboard - PropertyVista Flow</title>
+        <title>Dashboard - MyGolya</title>
         <meta name="description" content="User dashboard" />
       </Head>
       
@@ -35,7 +35,7 @@ export default function DashboardPage() {
             <div className="flex justify-between items-start mb-6">
               <div>
                 <h1 className="text-3xl font-bold text-gray-900">Welcome back!</h1>
-                <p className="text-gray-600 mt-2">Manage your PropertyVista Flow account</p>
+                <p className="text-gray-600 mt-2">Manage your MyGolya account</p>
               </div>
               <button
                 onClick={logout}

@@ -1,8 +1,8 @@
 {
   "auth": {
     "title": "Authentication",
-    "description": "Secure authentication for PropertyVista Flow",
-    "welcome": "Welcome to PropertyVista",
+    "description": "Secure authentication for MyGolya",
+    "welcome": "Welcome to MyGolya",
     "subtitle": "Your gateway to real estate opportunities",
     "login": "Sign In",
     "register": "Sign Up",

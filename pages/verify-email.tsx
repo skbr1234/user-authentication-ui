@@ -35,7 +35,7 @@ export default function VerifyEmailPage() {
   return (
     <>
       <Head>
-        <title>Email Verification - PropertyVista Flow</title>
+        <title>Email Verification - MyGolya</title>
         <meta name="description" content="Email verification" />
       </Head>
       

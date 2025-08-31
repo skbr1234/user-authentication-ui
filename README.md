@@ -1,6 +1,6 @@
 # User Authentication UI - Microfrontend
 
-A Next.js-based authentication microfrontend for PropertyVista Flow with multi-language support and SEO optimization.
+A Next.js-based authentication microfrontend for MyGolya with multi-language support and SEO optimization.
 
 ## Features
 

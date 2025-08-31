@@ -5,7 +5,7 @@ export default function Document() {
     <Html>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="User Authentication - PropertyVista Flow" />
+        <meta name="description" content="User Authentication - MyGolya" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body>

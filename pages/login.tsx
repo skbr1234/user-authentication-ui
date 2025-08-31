@@ -11,7 +11,7 @@ export default function LoginPage() {
   return (
     <>
       <Head>
-        <title>{t('auth.login')} - PropertyVista Flow</title>
+        <title>{t('auth.login')} - MyGolya</title>
         <meta name="description" content={t('auth.description')} />
       </Head>
       

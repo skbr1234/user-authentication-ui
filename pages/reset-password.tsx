@@ -65,7 +65,7 @@ export default function ResetPasswordPage() {
     return (
       <>
         <Head>
-          <title>Reset Password - PropertyVista Flow</title>
+          <title>Reset Password - MyGolya</title>
         </Head>
         <Layout centered maxWidth="md">
           <div className="w-full max-w-md mx-auto bg-white rounded-lg shadow-md p-6 sm:p-8">
@@ -89,7 +89,7 @@ export default function ResetPasswordPage() {
     return (
       <>
         <Head>
-          <title>Password Reset Successful - PropertyVista Flow</title>
+          <title>Password Reset Successful - MyGolya</title>
         </Head>
         <Layout centered maxWidth="md">
           <div className="w-full max-w-md mx-auto bg-white rounded-lg shadow-md p-6 sm:p-8">
@@ -117,7 +117,7 @@ export default function ResetPasswordPage() {
   return (
     <>
       <Head>
-        <title>Reset Password - PropertyVista Flow</title>
+        <title>Reset Password - MyGolya</title>
         <meta name="description" content="Reset your password" />
       </Head>
       
