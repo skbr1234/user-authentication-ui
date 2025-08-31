@@ -7,6 +7,10 @@ const nextConfig = {
   swcMinify: true,
   output: 'standalone',
   trailingSlash: false,
+  
+  env: {
+    NEXT_PUBLIC_AUTH_API_URL: process.env.NEXT_PUBLIC_AUTH_API_URL,
+  },
 
   async headers() {
     return [
