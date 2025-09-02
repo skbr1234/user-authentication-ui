@@ -6,7 +6,7 @@ import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useAuthState } from '../hooks/useAuth';
-import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
+import { PasswordInput } from './ui/PasswordInput';
 
 const loginSchema = z.object({
   email: z.string().email(),
@@ -20,7 +20,7 @@ export function LoginForm() {
   const { t } = useTranslation('common');
   const router = useRouter();
   const { login } = useAuthState();
-  const [showPassword, setShowPassword] = useState(false);
+
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -78,34 +78,13 @@ export function LoginForm() {
             )}
           </div>
 
-          <div className="space-y-2">
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-              {t('auth.password')}
-            </label>
-            <div className="relative">
-              <input
-                id="password"
-                type={showPassword ? 'text' : 'password'}
-                {...register('password')}
-                className="w-full px-3 py-2 pr-10 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                placeholder={t('auth.password')}
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
-              >
-                {showPassword ? (
-                  <EyeSlashIcon className="h-5 w-5" />
-                ) : (
-                  <EyeIcon className="h-5 w-5" />
-                )}
-              </button>
-            </div>
-            {errors.password && (
-              <p className="text-sm text-red-600">{t('validation.passwordTooShort')}</p>
-            )}
-          </div>
+          <PasswordInput
+            id="password"
+            label={t('auth.password')}
+            placeholder={t('auth.password')}
+            error={errors.password ? t('validation.passwordTooShort') : undefined}
+            {...register('password')}
+          />
 
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
