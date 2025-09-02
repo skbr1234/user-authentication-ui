@@ -30,11 +30,21 @@ export const useAuthState = () => {
     if (typeof window !== 'undefined') {
       const token = localStorage.getItem('auth_token');
       if (token) {
-        // Validate token and get user info
-        setLoading(false);
-      } else {
-        setLoading(false);
+        // TODO: Validate token and get user info from API
+        // For now, we'll need to store user data in localStorage too
+        const userData = localStorage.getItem('user_data');
+        if (userData) {
+          try {
+            setUser(JSON.parse(userData));
+          } catch (error) {
+            console.error('Failed to parse user data from localStorage');
+            localStorage.removeItem('user_data');
+            localStorage.removeItem('auth_token');
+            localStorage.removeItem('refresh_token');
+          }
+        }
       }
+      setLoading(false);
     } else {
       setLoading(false);
     }
@@ -48,6 +58,7 @@ export const useAuthState = () => {
       if (typeof window !== 'undefined') {
         localStorage.setItem('auth_token', response.token);
         localStorage.setItem('refresh_token', response.refreshToken);
+        localStorage.setItem('user_data', JSON.stringify(response.user));
       }
     } catch (error) {
       throw error;
@@ -64,6 +75,7 @@ export const useAuthState = () => {
       if (typeof window !== 'undefined') {
         localStorage.setItem('auth_token', response.token);
         localStorage.setItem('refresh_token', response.refreshToken);
+        localStorage.setItem('user_data', JSON.stringify(response.user));
       }
     } catch (error) {
       throw error;
@@ -77,6 +89,7 @@ export const useAuthState = () => {
     if (typeof window !== 'undefined') {
       localStorage.removeItem('auth_token');
       localStorage.removeItem('refresh_token');
+      localStorage.removeItem('user_data');
     }
   };
 

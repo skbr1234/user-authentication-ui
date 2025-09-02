@@ -10,16 +10,17 @@ import { authApi } from '../src/services/authApi';
 
 export default function DashboardPage() {
   const { t } = useTranslation('common');
-  const { user, isAuthenticated, logout } = useAuthState();
+  const { user, isAuthenticated, loading, logout } = useAuthState();
   const router = useRouter();
   const [isResending, setIsResending] = useState(false);
   const [resendMessage, setResendMessage] = useState('');
 
   useEffect(() => {
-    if (!isAuthenticated) {
+    // Only redirect if loading is complete and user is not authenticated
+    if (!loading && !isAuthenticated) {
       router.push('/login');
     }
-  }, [isAuthenticated, router]);
+  }, [loading, isAuthenticated, router]);
 
   const handleResendVerification = async () => {
     if (!user?.email) return;
@@ -37,6 +38,21 @@ export default function DashboardPage() {
     }
   };
 
+  // Show loading state while determining authentication
+  if (loading) {
+    return (
+      <Layout>
+        <div className="max-w-4xl mx-auto py-8 flex justify-center items-center min-h-[400px]">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <p className="text-gray-600">Loading...</p>
+          </div>
+        </div>
+      </Layout>
+    );
+  }
+
+  // Show nothing while redirecting to login
   if (!isAuthenticated || !user) {
     return null;
   }

@@ -47,10 +47,7 @@ export function RegisterForm() {
     try {
       const { confirmPassword, acceptTerms, ...registerData } = data;
       await registerUser(registerData);
-      // Wait a bit for state to update, then redirect
-      setTimeout(() => {
-        router.push('/dashboard');
-      }, 100);
+      router.push('/dashboard');
     } catch (err) {
       setError(t('errors.registrationFailed'));
     } finally {
