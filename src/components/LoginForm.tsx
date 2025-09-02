@@ -37,9 +37,10 @@ export function LoginForm() {
     setError('');
     try {
       await login(data);
-      if (typeof window !== 'undefined') {
+      // Wait a bit for state to update, then redirect
+      setTimeout(() => {
         router.push('/dashboard');
-      }
+      }, 100);
     } catch (err) {
       setError(t('errors.loginFailed'));
     } finally {
