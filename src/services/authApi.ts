@@ -77,6 +77,13 @@ class AuthApiService {
       method: 'GET',
     });
   }
+
+  async resendVerificationEmail(email: string): Promise<{ message: string }> {
+    return this.request<{ message: string }>('/auth/resend-verification', {
+      method: 'POST',
+      body: JSON.stringify({ email }),
+    });
+  }
 }
 
 export const authApi = new AuthApiService();
