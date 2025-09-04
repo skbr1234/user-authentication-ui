@@ -33,8 +33,8 @@ export function ForgotPasswordForm() {
     try {
       await authApi.forgotPassword(data);
       setSuccess(true);
-    } catch (err) {
-      setError(t('errors.networkError'));
+    } catch {
+      setError(`${t('errors.networkError')}`);
     } finally {
       setIsLoading(false);
     }
@@ -44,11 +44,14 @@ export function ForgotPasswordForm() {
     return (
       <div className="w-full max-w-md mx-auto bg-white rounded-lg shadow-md p-6 sm:p-8">
         <div className="text-center space-y-4">
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">{t('auth.emailVerification')}</h1>
-          <p className="text-sm text-gray-600">
-            {t('auth.checkEmail')}
-          </p>
-          <Link href="/login" className="inline-flex items-center text-blue-600 hover:text-blue-500">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
+            {t('auth.emailVerification')}
+          </h1>
+          <p className="text-sm text-gray-600">{t('auth.checkEmail')}</p>
+          <Link
+            href="/login"
+            className="inline-flex items-center text-blue-600 hover:text-blue-500"
+          >
             <ArrowLeftIcon className="mr-2 h-4 w-4" />
             {t('auth.login')}
           </Link>
@@ -61,10 +64,10 @@ export function ForgotPasswordForm() {
     <div className="w-full max-w-md mx-auto bg-white rounded-lg shadow-md p-6 sm:p-8">
       <div className="space-y-6">
         <div className="text-center space-y-2">
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">{t('auth.forgotPassword')}</h1>
-          <p className="text-sm text-gray-600">
-            {t('auth.enterEmail')}
-          </p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
+            {t('auth.forgotPassword')}
+          </h1>
+          <p className="text-sm text-gray-600">{t('auth.enterEmail')}</p>
         </div>
 
         {error && (
@@ -75,7 +78,9 @@ export function ForgotPasswordForm() {
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div className="space-y-2">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">{t('auth.email')}</label>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              {t('auth.email')}
+            </label>
             <input
               id="email"
               type="email"
@@ -83,9 +88,7 @@ export function ForgotPasswordForm() {
               placeholder={t('auth.email')}
               className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
-            {errors.email && (
-              <p className="text-sm text-red-600">{t('validation.invalidEmail')}</p>
-            )}
+            {errors.email && <p className="text-sm text-red-600">{t('validation.invalidEmail')}</p>}
           </div>
 
           <button
@@ -98,7 +101,10 @@ export function ForgotPasswordForm() {
         </form>
 
         <div className="text-center">
-          <Link href="/login" className="inline-flex items-center text-sm text-blue-600 hover:text-blue-500">
+          <Link
+            href="/login"
+            className="inline-flex items-center text-sm text-blue-600 hover:text-blue-500"
+          >
             <ArrowLeftIcon className="mr-2 h-4 w-4" />
             {t('auth.login')}
           </Link>

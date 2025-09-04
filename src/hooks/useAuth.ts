@@ -1,5 +1,5 @@
 import { useState, useEffect, createContext, useContext } from 'react';
-import { User, LoginRequest, RegisterRequest, AuthResponse } from '@/types/auth.types';
+import { User, LoginRequest, RegisterRequest } from '@/types/auth.types';
 import { authApi } from '@/services/authApi';
 
 interface AuthContextType {
@@ -36,8 +36,8 @@ export const useAuthState = () => {
         if (userData) {
           try {
             setUser(JSON.parse(userData));
-          } catch (error) {
-            console.error('Failed to parse user data from localStorage');
+          } catch (e) {
+            console.error('Failed to parse user data from localStorage', e);
             localStorage.removeItem('user_data');
             localStorage.removeItem('auth_token');
             localStorage.removeItem('refresh_token');

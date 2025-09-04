@@ -38,10 +38,10 @@ export function LoginForm() {
     try {
       await login(data);
       router.push('/dashboard');
-    } catch (err) {
-      setError(t('errors.loginFailed'));
+    } catch {
+      setError(`${t('errors.loginFailed')}`);
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
@@ -71,9 +71,7 @@ export function LoginForm() {
               className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               placeholder={t('auth.email')}
             />
-            {errors.email && (
-              <p className="text-sm text-red-600">{t('validation.invalidEmail')}</p>
-            )}
+            {errors.email && <p className="text-sm text-red-600">{t('validation.invalidEmail')}</p>}
           </div>
 
           <PasswordInput
@@ -96,10 +94,7 @@ export function LoginForm() {
                 {t('auth.rememberMe')}
               </label>
             </div>
-            <Link
-              href="/forgot-password"
-              className="text-sm text-blue-600 hover:text-blue-500"
-            >
+            <Link href="/forgot-password" className="text-sm text-blue-600 hover:text-blue-500">
               {t('auth.forgotPassword')}
             </Link>
           </div>

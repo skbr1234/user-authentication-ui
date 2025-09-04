@@ -1,4 +1,4 @@
-
+import { GetServerSideProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import Head from 'next/head';
@@ -14,7 +14,7 @@ export default function RegisterPage() {
         <title>{t('auth.register')} - MyGolya</title>
         <meta name="description" content={t('auth.description')} />
       </Head>
-      
+
       <Layout centered maxWidth="md">
         <RegisterForm />
       </Layout>
@@ -22,7 +22,7 @@ export default function RegisterPage() {
   );
 }
 
-export const getServerSideProps = async ({ locale }: any) => {
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
   return {
     props: {
       ...(await serverSideTranslations(locale ?? 'en', ['common'])),

@@ -1,4 +1,4 @@
-
+import { GetServerSideProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import Head from 'next/head';
@@ -14,7 +14,7 @@ export default function ForgotPasswordPage() {
         <title>{t('auth.forgotPassword')} - MyGolya</title>
         <meta name="description" content={t('auth.description')} />
       </Head>
-      
+
       <Layout centered maxWidth="md">
         <ForgotPasswordForm />
       </Layout>
@@ -22,7 +22,7 @@ export default function ForgotPasswordPage() {
   );
 }
 
-export const getServerSideProps = async ({ locale }: any) => {
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
   return {
     props: {
       ...(await serverSideTranslations(locale ?? 'en', ['common'])),

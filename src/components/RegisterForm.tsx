@@ -6,22 +6,24 @@ import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useAuthState } from '../hooks/useAuth';
-import { UserRole } from '../types/auth.types';
+
 import { PasswordInput } from './ui/PasswordInput';
 
-const registerSchema = z.object({
-  firstName: z.string().min(2),
-  lastName: z.string().min(2),
-  email: z.string().email(),
-  phone: z.string().optional(),
-  password: z.string().min(8),
-  confirmPassword: z.string().min(8),
-  role: z.enum(['buyer_renter', 'seller_landlord']),
-  acceptTerms: z.boolean().refine(val => val === true),
-}).refine(data => data.password === data.confirmPassword, {
-  message: "Passwords don't match",
-  path: ["confirmPassword"],
-});
+const registerSchema = z
+  .object({
+    firstName: z.string().min(2),
+    lastName: z.string().min(2),
+    email: z.string().email(),
+    phone: z.string().optional(),
+    password: z.string().min(8),
+    confirmPassword: z.string().min(8),
+    role: z.enum(['buyer_renter', 'seller_landlord']),
+    acceptTerms: z.boolean().refine((val) => val === true),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords don't match",
+    path: ['confirmPassword'],
+  });
 
 type RegisterFormData = z.infer<typeof registerSchema>;
 
@@ -45,11 +47,19 @@ export function RegisterForm() {
     setIsLoading(true);
     setError('');
     try {
-      const { confirmPassword, acceptTerms, ...registerData } = data;
+      // Extract only the fields needed for registration
+      const registerData = {
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        phone: data.phone,
+        password: data.password,
+        role: data.role,
+      };
       await registerUser(registerData);
       router.push('/dashboard');
-    } catch (err) {
-      setError(t('errors.registrationFailed'));
+    } catch {
+      setError(`${t('errors.registrationFailed')}`);
     } finally {
       setIsLoading(false);
     }
@@ -113,9 +123,7 @@ export function RegisterForm() {
               className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               placeholder={t('auth.email')}
             />
-            {errors.email && (
-              <p className="text-sm text-red-600">{t('validation.invalidEmail')}</p>
-            )}
+            {errors.email && <p className="text-sm text-red-600">{t('validation.invalidEmail')}</p>}
           </div>
 
           <div className="space-y-2">
@@ -172,9 +180,7 @@ export function RegisterForm() {
               {t('auth.termsAndConditions')}
             </label>
           </div>
-          {errors.acceptTerms && (
-            <p className="text-sm text-red-600">{t('validation.required')}</p>
-          )}
+          {errors.acceptTerms && <p className="text-sm text-red-600">{t('validation.required')}</p>}
 
           <button
             type="submit"

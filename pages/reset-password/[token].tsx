@@ -13,18 +13,20 @@ import { AuthCard } from '../../src/components/auth/AuthCard';
 import { StatusDisplay } from '../../src/components/auth/StatusDisplay';
 import { PasswordInput } from '../../src/components/ui/PasswordInput';
 
-const resetPasswordSchema = z.object({
-  password: z.string().min(8),
-  confirmPassword: z.string().min(8),
-}).refine(data => data.password === data.confirmPassword, {
-  message: "Passwords don't match",
-  path: ["confirmPassword"],
-});
+const resetPasswordSchema = z
+  .object({
+    password: z.string().min(8),
+    confirmPassword: z.string().min(8),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords don't match",
+    path: ['confirmPassword'],
+  });
 
 type ResetPasswordFormData = z.infer<typeof resetPasswordSchema>;
 
 export default function ResetPasswordTokenPage() {
-  const { t } = useTranslation('common');
+  useTranslation('common');
   const router = useRouter();
   const { token } = router.query;
 
@@ -61,7 +63,7 @@ export default function ResetPasswordTokenPage() {
         newPassword: data.password,
       });
       setSuccess(true);
-    } catch (err) {
+    } catch {
       setError('Failed to reset password. The link may be expired or invalid.');
     } finally {
       setIsLoading(false);
@@ -144,47 +146,46 @@ export default function ResetPasswordTokenPage() {
         <title>Reset Password - MyGolya</title>
         <meta name="description" content="Reset your password" />
       </Head>
-      
+
       <AuthCard title="Reset Password" description="Enter your new password below">
         <div className="space-y-6">
-
-            {error && (
-              <div className="p-3 text-sm text-red-600 bg-red-50 border border-red-200 rounded-md">
-                {error}
-              </div>
-            )}
-
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-              <PasswordInput
-                id="password"
-                label="New Password"
-                placeholder="Enter new password"
-                error={errors.password ? "Password must be at least 8 characters" : undefined}
-                {...register('password')}
-              />
-
-              <PasswordInput
-                id="confirmPassword"
-                label="Confirm New Password"
-                placeholder="Confirm new password"
-                error={errors.confirmPassword ? "Passwords don't match" : undefined}
-                {...register('confirmPassword')}
-              />
-
-              <button
-                type="submit"
-                disabled={isLoading}
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isLoading ? 'Resetting...' : 'Reset Password'}
-              </button>
-            </form>
-
-            <div className="text-center">
-              <Link href="/login" className="text-sm text-blue-600 hover:text-blue-500">
-                Back to Login
-              </Link>
+          {error && (
+            <div className="p-3 text-sm text-red-600 bg-red-50 border border-red-200 rounded-md">
+              {error}
             </div>
+          )}
+
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            <PasswordInput
+              id="password"
+              label="New Password"
+              placeholder="Enter new password"
+              error={errors.password ? 'Password must be at least 8 characters' : undefined}
+              {...register('password')}
+            />
+
+            <PasswordInput
+              id="confirmPassword"
+              label="Confirm New Password"
+              placeholder="Confirm new password"
+              error={errors.confirmPassword ? "Passwords don't match" : undefined}
+              {...register('confirmPassword')}
+            />
+
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isLoading ? 'Resetting...' : 'Reset Password'}
+            </button>
+          </form>
+
+          <div className="text-center">
+            <Link href="/login" className="text-sm text-blue-600 hover:text-blue-500">
+              Back to Login
+            </Link>
+          </div>
         </div>
       </AuthCard>
     </>
