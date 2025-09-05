@@ -25,7 +25,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>{t('auth.title')} - MyGolya</title>
+        <title>{t('auth.title')} - Auth Service</title>
         <meta name="description" content={t('auth.description')} />
       </Head>
 

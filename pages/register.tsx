@@ -11,7 +11,7 @@ export default function RegisterPage() {
   return (
     <>
       <Head>
-        <title>{t('auth.register')} - MyGolya</title>
+        <title>{t('auth.register')} - Auth Service</title>
         <meta name="description" content={t('auth.description')} />
       </Head>
 

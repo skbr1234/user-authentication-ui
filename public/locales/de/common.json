@@ -1,9 +1,9 @@
 {
   "auth": {
     "title": "Authentication",
-    "description": "Secure authentication for MyGolya",
-    "welcome": "Welcome to MyGolya",
-    "subtitle": "Your gateway to real estate opportunities",
+    "description": "Secure authentication service",
+    "welcome": "Welcome",
+    "subtitle": "Secure access to your account",
     "login": "Sign In",
     "register": "Sign Up",
     "email": "Email",
@@ -12,10 +12,10 @@
     "firstName": "First Name",
     "lastName": "Last Name",
     "phone": "Phone Number",
-    "role": "I am a",
+    "role": "Role",
     "roles": {
-      "buyer_renter": "Buyer/Renter",
-      "seller_landlord": "Seller/Landlord"
+      "user": "User",
+      "admin": "Admin"
     },
     "forgotPassword": "Forgot Password?",
     "resetPassword": "Reset Password",
@@ -40,18 +40,18 @@
   },
   "email": {
     "verification": {
-      "subject": "Verify Your Email - MyGolya",
+      "subject": "Verify Your Email",
       "title": "Verify Your Email Address",
-      "greeting": "Thank you for registering with MyGolya!",
+      "greeting": "Thank you for registering!",
       "instruction": "Please click the button below to verify your email address:",
       "button": "Verify Email",
       "alternative": "Or copy and paste this link in your browser:",
       "footer": "This link will expire in 24 hours. If you didn't create an account, please ignore this email."
     },
     "passwordReset": {
-      "subject": "Reset Your Password - MyGolya",
+      "subject": "Reset Your Password",
       "title": "Reset Your Password",
-      "greeting": "You requested to reset your password for MyGolya.",
+      "greeting": "You requested to reset your password.",
       "instruction": "Please click the button below to reset your password:",
       "button": "Reset Password",
       "alternative": "Or copy and paste this link in your browser:",

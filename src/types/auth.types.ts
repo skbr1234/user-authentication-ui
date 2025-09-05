@@ -10,7 +10,7 @@ export interface User {
   updatedAt: string;
 }
 
-export type UserRole = 'buyer_renter' | 'seller_landlord';
+export type UserRole = 'user' | 'admin';
 
 export interface LoginRequest {
   email: string;

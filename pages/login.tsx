@@ -11,7 +11,7 @@ export default function LoginPage() {
   return (
     <>
       <Head>
-        <title>{t('auth.login')} - MyGolya</title>
+        <title>{t('auth.login')} - Auth Service</title>
         <meta name="description" content={t('auth.description')} />
       </Head>
 

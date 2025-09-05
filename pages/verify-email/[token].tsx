@@ -42,7 +42,7 @@ export default function VerifyEmailTokenPage() {
   return (
     <>
       <Head>
-        <title>Email Verification - MyGolya</title>
+        <title>Email Verification - Auth Service</title>
         <meta name="description" content="Email verification" />
       </Head>
 

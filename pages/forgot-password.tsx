@@ -11,7 +11,7 @@ export default function ForgotPasswordPage() {
   return (
     <>
       <Head>
-        <title>{t('auth.forgotPassword')} - MyGolya</title>
+        <title>{t('auth.forgotPassword')} - Auth Service</title>
         <meta name="description" content={t('auth.description')} />
       </Head>
 

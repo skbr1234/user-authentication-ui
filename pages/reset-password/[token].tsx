@@ -74,7 +74,7 @@ export default function ResetPasswordTokenPage() {
     return (
       <>
         <Head>
-          <title>Reset Password - MyGolya</title>
+          <title>Reset Password - Auth Service</title>
         </Head>
         <AuthCard title="Reset Password">
           <StatusDisplay
@@ -96,7 +96,7 @@ export default function ResetPasswordTokenPage() {
     return (
       <>
         <Head>
-          <title>Reset Password - MyGolya</title>
+          <title>Reset Password - Auth Service</title>
         </Head>
         <AuthCard title="Invalid Link">
           <StatusDisplay
@@ -122,7 +122,7 @@ export default function ResetPasswordTokenPage() {
     return (
       <>
         <Head>
-          <title>Password Reset Successful - MyGolya</title>
+          <title>Password Reset Successful - Auth Service</title>
         </Head>
         <AuthCard title="Password Reset">
           <StatusDisplay
@@ -143,7 +143,7 @@ export default function ResetPasswordTokenPage() {
   return (
     <>
       <Head>
-        <title>Reset Password - MyGolya</title>
+        <title>Reset Password - Auth Service</title>
         <meta name="description" content="Reset your password" />
       </Head>
 
