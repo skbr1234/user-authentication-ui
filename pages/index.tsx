@@ -3,9 +3,24 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Link from 'next/link';
 import Head from 'next/head';
+import { useEffect, useState } from 'react';
+import { authApi } from '../src/services/authApi';
 
 export default function Home() {
   const { t } = useTranslation('common');
+  const [isHealthy, setIsHealthy] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const checkHealth = async () => {
+      try {
+        await authApi.healthCheck();
+        setIsHealthy(true);
+      } catch {
+        setIsHealthy(false);
+      }
+    };
+    checkHealth();
+  }, []);
 
   return (
     <>
@@ -17,6 +32,20 @@ export default function Home() {
       <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-6 sm:space-y-8">
           <div className="text-center">
+            <div className="flex items-center justify-center mb-4">
+              <div
+                className={`w-3 h-3 rounded-full mr-2 ${
+                  isHealthy === null ? 'bg-yellow-400' : isHealthy ? 'bg-green-400' : 'bg-red-400'
+                }`}
+              ></div>
+              <span className="text-sm text-gray-500">
+                {isHealthy === null
+                  ? 'Checking...'
+                  : isHealthy
+                    ? 'Service Online'
+                    : 'Service Offline'}
+              </span>
+            </div>
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
               {t('auth.welcome')}
             </h1>

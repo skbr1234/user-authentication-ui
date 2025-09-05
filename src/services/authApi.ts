@@ -1,20 +1,19 @@
-import { 
-  LoginRequest, 
-  RegisterRequest, 
-  AuthResponse, 
-  ForgotPasswordRequest, 
-  ResetPasswordRequest 
+import {
+  LoginRequest,
+  RegisterRequest,
+  AuthResponse,
+  ForgotPasswordRequest,
+  ResetPasswordRequest,
 } from '../types/auth.types';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_AUTH_API_URL || 'https://user-authentication-service-idnv.onrender.com/api';
+const API_BASE_URL =
+  process.env.NEXT_PUBLIC_AUTH_API_URL ||
+  'https://user-authentication-service-idnv.onrender.com/api';
 
 class AuthApiService {
-  private async request<T>(
-    endpoint: string, 
-    options: RequestInit = {}
-  ): Promise<T> {
+  private async request<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
     const url = `${API_BASE_URL}${endpoint}`;
-    
+
     const config: RequestInit = {
       headers: {
         'Content-Type': 'application/json',
@@ -24,10 +23,10 @@ class AuthApiService {
     };
 
     const response = await fetch(url, config);
-    
+
     if (!response.ok) {
-      const error = await response.json().catch(() => ({ 
-        message: 'Network error' 
+      const error = await response.json().catch(() => ({
+        message: 'Network error',
       }));
       throw new Error(error.message || 'Request failed');
     }
@@ -67,7 +66,7 @@ class AuthApiService {
     return this.request<AuthResponse>('/auth/refresh', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${refreshToken}`,
+        Authorization: `Bearer ${refreshToken}`,
       },
     });
   }
@@ -83,6 +82,15 @@ class AuthApiService {
       method: 'POST',
       body: JSON.stringify({ email }),
     });
+  }
+
+  async healthCheck(): Promise<{ status: string; database: string; timestamp: string }> {
+    const url = `${API_BASE_URL.replace('/api', '')}/health`;
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error('Health check failed');
+    }
+    return response.json();
   }
 }
 
