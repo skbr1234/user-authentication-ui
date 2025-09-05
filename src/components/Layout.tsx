@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { cn, responsiveClasses } from '@/lib/utils';
+import { Footer } from './Footer';
 
 interface LayoutProps {
   children: ReactNode;
@@ -8,12 +9,7 @@ interface LayoutProps {
   maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full';
 }
 
-export function Layout({ 
-  children, 
-  className, 
-  centered = false, 
-  maxWidth = 'md' 
-}: LayoutProps) {
+export function Layout({ children, className, centered = false, maxWidth = 'md' }: LayoutProps) {
   const maxWidthClasses = {
     sm: 'max-w-sm',
     md: 'max-w-md',
@@ -24,19 +20,19 @@ export function Layout({
   };
 
   return (
-    <div className={cn(
-      'min-h-screen bg-background',
-      responsiveClasses.padding,
-      centered && 'flex items-center justify-center',
-      className
-    )}>
-      <div className={cn(
-        'w-full',
-        maxWidthClasses[maxWidth],
-        centered && 'mx-auto'
-      )}>
-        {children}
+    <div
+      className={cn(
+        'min-h-screen bg-background flex flex-col',
+        responsiveClasses.padding,
+        className
+      )}
+    >
+      <div className={cn('flex-1', centered && 'flex items-center justify-center')}>
+        <div className={cn('w-full', maxWidthClasses[maxWidth], centered && 'mx-auto')}>
+          {children}
+        </div>
       </div>
+      <Footer />
     </div>
   );
 }
@@ -55,11 +51,13 @@ export function Card({ children, className, padding = 'md' }: CardProps) {
   };
 
   return (
-    <div className={cn(
-      'bg-card border border-border rounded-lg shadow-sm',
-      paddingClasses[padding],
-      className
-    )}>
+    <div
+      className={cn(
+        'bg-card border border-border rounded-lg shadow-sm',
+        paddingClasses[padding],
+        className
+      )}
+    >
       {children}
     </div>
   );
@@ -78,11 +76,11 @@ interface ResponsiveGridProps {
   className?: string;
 }
 
-export function ResponsiveGrid({ 
-  children, 
-  cols = { default: 1, md: 2, lg: 3 }, 
+export function ResponsiveGrid({
+  children,
+  cols = { default: 1, md: 2, lg: 3 },
   gap = 'md',
-  className 
+  className,
 }: ResponsiveGridProps) {
   const gapClasses = {
     sm: 'gap-3 sm:gap-4',
@@ -95,17 +93,8 @@ export function ResponsiveGrid({
     cols.sm && `sm:grid-cols-${cols.sm}`,
     cols.md && `md:grid-cols-${cols.md}`,
     cols.lg && `lg:grid-cols-${cols.lg}`,
-    cols.xl && `xl:grid-cols-${cols.xl}`,
+    cols.xl && `xl:grid-cols-${cols.xl}`
   );
 
-  return (
-    <div className={cn(
-      'grid',
-      gridCols,
-      gapClasses[gap],
-      className
-    )}>
-      {children}
-    </div>
-  );
+  return <div className={cn('grid', gridCols, gapClasses[gap], className)}>{children}</div>;
 }

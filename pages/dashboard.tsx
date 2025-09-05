@@ -60,7 +60,7 @@ export default function DashboardPage() {
   return (
     <>
       <Head>
-        <title>Dashboard - MyGolya</title>
+        <title>Dashboard - Auth Service</title>
         <meta name="description" content="User dashboard" />
       </Head>
 
@@ -70,7 +70,7 @@ export default function DashboardPage() {
             <div className="flex justify-between items-start mb-6">
               <div>
                 <h1 className="text-3xl font-bold text-gray-900">Welcome back!</h1>
-                <p className="text-gray-600 mt-2">Manage your MyGolya account</p>
+                <p className="text-gray-600 mt-2">Manage your account</p>
               </div>
               <button
                 onClick={logout}
@@ -117,10 +117,10 @@ export default function DashboardPage() {
                 <h2 className="text-lg font-semibold text-gray-900 mb-3">Quick Actions</h2>
                 <div className="space-y-3">
                   <button className="w-full text-left px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
-                    Browse Properties
+                    View Profile
                   </button>
                   <button className="w-full text-left px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors">
-                    List Property
+                    Update Settings
                   </button>
                   <button className="w-full text-left px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition-colors">
                     Account Settings

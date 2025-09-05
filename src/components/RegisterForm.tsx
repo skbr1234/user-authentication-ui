@@ -17,7 +17,7 @@ const registerSchema = z
     phone: z.string().optional(),
     password: z.string().min(8),
     confirmPassword: z.string().min(8),
-    role: z.enum(['buyer_renter', 'seller_landlord']),
+    role: z.enum(['user', 'admin']),
     acceptTerms: z.boolean().refine((val) => val === true),
   })
   .refine((data) => data.password === data.confirmPassword, {
@@ -148,8 +148,8 @@ export function RegisterForm() {
               {...register('role')}
               className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             >
-              <option value="buyer_renter">{t('auth.roles.buyer_renter')}</option>
-              <option value="seller_landlord">{t('auth.roles.seller_landlord')}</option>
+              <option value="user">{t('auth.roles.user')}</option>
+              <option value="admin">{t('auth.roles.admin')}</option>
             </select>
           </div>
 
